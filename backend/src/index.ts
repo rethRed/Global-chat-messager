@@ -17,8 +17,10 @@ AppDataSource.initialize()
 
 const app = express()
 
+import cors from "cors"
 import routes from "./routes/index"
 
+app.use(cors())
 app.use(express.json())
 app.use(routes)
 
@@ -26,10 +28,9 @@ import { userRepository } from "./repositories"
 
 app.get("/", async (req, res) => {
 
-    var all_users = await userRepository.findOne({
-        where: {id: 2}
-    })
+    var all_users = await userRepository.find()
     return res.json(all_users)
 })
+
 
 app.listen(5000, () => console.log("running on port 5000"))

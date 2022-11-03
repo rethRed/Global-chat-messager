@@ -11,8 +11,7 @@ export class Users extends BaseEntity {
         onDelete: "CASCADE",
         onUpdate: "CASCADE"
     })
-    @JoinColumn({ name: "settings_id" })
-    userSettings_id!: UserSettings
+
 
     @Column({ unique: true })
     userName!: string

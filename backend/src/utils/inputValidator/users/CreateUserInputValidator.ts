@@ -8,7 +8,6 @@ export const CreateUserInputValidator = [
     body("username").isLength({ min: 8, max: 255 })
     .withMessage("invalid length."),
     body("username").custom(async userName => { 
-        
         if(!userName){
             return Promise.reject("userName needs to be valid")
         }
@@ -19,6 +18,7 @@ export const CreateUserInputValidator = [
         if(user){
             return Promise.reject("userName already in use")
         }
+        
         return true
     }),
 

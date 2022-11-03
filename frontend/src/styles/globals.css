@@ -1,5 +1,8 @@
+
+
 html,
 body {
+  background-color: #0F0E0E;
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
@@ -12,15 +15,18 @@ a {
 }
 
 * {
+  padding: 0;
+  margin: 0;
   box-sizing: border-box;
 }
 
 @media (prefers-color-scheme: dark) {
   html {
-    color-scheme: dark;
+
+    background-color: #0F0E0E;
   }
   body {
-    color: white;
-    background: black;
+    background-color: #0F0E0E;
+    height: 100%;
   }
 }

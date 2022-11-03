@@ -1,6 +1,6 @@
 import { DataSource } from "typeorm"
 
-import { Users, UserTokens, UserSettings } from "../models/entities"
+import { Users, UserTokens, UserSettings, Posts, Likes } from "../models/entities"
 
 export const AppDataSource = new DataSource({
     type: "mysql",
@@ -9,13 +9,15 @@ export const AppDataSource = new DataSource({
     username: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
-    synchronize: false,
+    synchronize: true,
     logging: true,
 
     entities: [ 
         Users,
         UserTokens,
-        UserSettings 
+        UserSettings,
+        Posts, 
+        Likes
         
     ],
     migrations: []

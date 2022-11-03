@@ -1,7 +1,7 @@
 import { userRepository, UserTokenRepository, UserSettingsRepository } from "../../repositories";
-import { UserSettings } from "../../models/entities";
 import jwt from "jsonwebtoken"
-import { Repository } from "typeorm";
+import bcrypt from "bcrypt"
+import { CreateToken } from "../../utils/TokenManegement";
 
 type IcreatedUser = {
     token: string,
@@ -10,33 +10,32 @@ type IcreatedUser = {
 
 export default async function CreateUserServices(username: string, email: string, password: string): Promise<IcreatedUser> {
     
+    //hash password
+    const salt = await bcrypt.genSalt(10)
+    const hash_password = await bcrypt.hash(password, salt) 
+
     //create the new user with its settings
+
     const newUser = userRepository.create({
         userName: username,
         email: email,
-        password: password
+        password: hash_password,        
+
     })
     await userRepository.save(newUser)
     
     const newUserSettings = UserSettingsRepository.create({
-        users: newUser,
         img_path: "",
-        description: ""
+        description: "",
+        users: newUser
     })
 
     await UserSettingsRepository.save(newUserSettings)
 
     //generates token
     const user_id = newUser.id
-    const token = generateToken(user_id)
-
-    const newToken = UserTokenRepository.create({
-        users: newUser,
-        token: token
-    })
-    await UserTokenRepository.save(newToken)
-
-    console.log(await userRepository.getUserInfoById(user_id))
+    
+    const token = await CreateToken(user_id)
 
     return {
         token: token,
