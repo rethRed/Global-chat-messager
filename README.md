@@ -2,6 +2,9 @@
 
 <p>This is a simple global chat menssager that allows the user to register, login and send a menssager to the global chat.</p>
 
+<strong>Tecnologies</strong>
+<p>It was used next.js with typescript in the frontend</p>
+<p>And express with typescript, typeorm and mysql in the backend </p>
 
 
 <h1>Setup the project</h1>
