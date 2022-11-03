@@ -1,4 +1,4 @@
-# menssager
+# Global chat menssager
 
 <p>This is a simple global chat menssager that allows the user to register, login and send a menssager to the global chat.</p>
 
