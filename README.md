@@ -12,6 +12,8 @@
 
 ![config_env](https://user-images.githubusercontent.com/92902916/199751787-f6e8ed75-9bbd-4d3f-ace3-67336c7c245f.png)
 
+To run the project, you can use ```npm run dev``` in both backend and frontend
+
 <h1>Fetures</h1>
 
 <p><strong>You can login</strong></p>
